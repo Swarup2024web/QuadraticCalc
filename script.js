@@ -5,33 +5,33 @@ function solve() {
   const result = document.getElementById("steps");
 
   if (isNaN(a) || isNaN(b) || isNaN(c)) {
-    result.textContent = "Please enter all three values.";
+    result.textContent = "❗ Please enter all three values.";
     return;
   }
 
   if (a === 0) {
-    result.textContent = "This is not a quadratic equation (a ≠ 0).";
+    result.textContent = "❗ Not a quadratic equation (a ≠ 0).";
     return;
   }
 
-  const discriminant = b * b - 4 * a * c;
-  let stepText = `Discriminant (D) = ${b}² - 4×${a}×${c} = ${discriminant}\n`;
+  const D = b * b - 4 * a * c;
+  let text = `Discriminant (D) = ${b}² - 4×${a}×${c} = ${D}\n`;
 
-  if (discriminant > 0) {
-    const root1 = ((-b + Math.sqrt(discriminant)) / (2 * a)).toFixed(2);
-    const root2 = ((-b - Math.sqrt(discriminant)) / (2 * a)).toFixed(2);
-    stepText += "D > 0 → Two distinct real roots.\n";
-    stepText += `Roots: x₁ = ${root1}, x₂ = ${root2}`;
-  } else if (discriminant === 0) {
-    const root = (-b / (2 * a)).toFixed(2);
-    stepText += "D = 0 → Two equal real roots.\n";
-    stepText += `Root: x = ${root}`;
+  if (D > 0) {
+    const x1 = ((-b + Math.sqrt(D)) / (2 * a)).toFixed(3);
+    const x2 = ((-b - Math.sqrt(D)) / (2 * a)).toFixed(3);
+    text += "🟢 D > 0 → Two distinct real roots\n";
+    text += `x₁ = ${x1}, x₂ = ${x2}`;
+  } else if (D === 0) {
+    const x = (-b / (2 * a)).toFixed(3);
+    text += "🔵 D = 0 → Two equal real roots\n";
+    text += `x = ${x}`;
   } else {
-    const real = (-b / (2 * a)).toFixed(2);
-    const imag = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
-    stepText += "D < 0 → Two complex roots.\n";
-    stepText += `Roots: x₁ = ${real} + ${imag}i, x₂ = ${real} - ${imag}i`;
+    const real = (-b / (2 * a)).toFixed(3);
+    const imag = (Math.sqrt(-D) / (2 * a)).toFixed(3);
+    text += "🔴 D < 0 → Two complex roots\n";
+    text += `x₁ = ${real} + ${imag}i\nx₂ = ${real} - ${imag}i`;
   }
 
-  result.textContent = stepText;
+  result.textContent = text;
 }
