@@ -5,47 +5,45 @@ function solve() {
   const result = document.getElementById("steps");
 
   if (isNaN(a) || isNaN(b) || isNaN(c)) {
-    result.textContent = "❗ Please enter all three values.";
+    result.innerHTML = "❗ Please enter all three values.";
     return;
   }
 
   if (a === 0) {
-    result.textContent = "❗ Not a quadratic equation (a ≠ 0).";
+    result.innerHTML = "❗ Not a quadratic equation (a ≠ 0).";
     return;
   }
 
   const D = b * b - 4 * a * c;
-  const stepLines = [];
+  const sqrtD = Math.sqrt(Math.abs(D));
+  const denom = 2 * a;
+  const steps = [];
 
-  stepLines.push(`📘 Step 1: Use the formula`);
-  stepLines.push(`  x = (-b ± √(b² - 4ac)) / 2a`);
-  stepLines.push(``);
+  steps.push("$$\\textbf{Step\\ 1:}\\ \\text{Use the quadratic formula}$$");
+  steps.push("$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$");
 
-  stepLines.push(`📘 Step 2: Substitute the values`);
-  stepLines.push(`  x = (-(${b}) ± √(${b}² - 4×${a}×${c})) / (2×${a})`);
-  stepLines.push(``);
+  steps.push("$$\\textbf{Step\\ 2:}\\ \\text{Substitute the values:}$$");
+  steps.push(`$$x = \\frac{-(${b}) \\pm \\sqrt{(${b})^2 - 4(${a})(${c})}}{2(${a})}$$`);
 
-  stepLines.push(`📘 Step 3: Calculate discriminant`);
-  stepLines.push(`  D = ${b}² - 4×${a}×${c} = ${D}`);
-  stepLines.push(``);
+  steps.push("$$\\textbf{Step\\ 3:}\\ \\text{Calculate the discriminant:}$$");
+  steps.push(`$$D = ${b}^2 - 4(${a})(${c}) = ${D}$$`);
 
   if (D > 0) {
-    const x1 = ((-b + Math.sqrt(D)) / (2 * a)).toFixed(3);
-    const x2 = ((-b - Math.sqrt(D)) / (2 * a)).toFixed(3);
-    stepLines.push(`📘 Step 4: D > 0 → Two distinct real roots`);
-    stepLines.push(`  x₁ = ${x1}`);
-    stepLines.push(`  x₂ = ${x2}`);
+    const x1 = ((-b + sqrtD) / denom).toFixed(3);
+    const x2 = ((-b - sqrtD) / denom).toFixed(3);
+    steps.push("$$\\textbf{Step\\ 4:}\\ D > 0 \\Rightarrow \\text{Two distinct real roots}$$");
+    steps.push(`$$x_1 = ${x1},\\quad x_2 = ${x2}$$`);
   } else if (D === 0) {
-    const x = (-b / (2 * a)).toFixed(3);
-    stepLines.push(`📘 Step 4: D = 0 → Two equal real roots`);
-    stepLines.push(`  x = ${x}`);
+    const x = (-b / denom).toFixed(3);
+    steps.push("$$\\textbf{Step\\ 4:}\\ D = 0 \\Rightarrow \\text{Two equal real roots}$$");
+    steps.push(`$$x = ${x}$$`);
   } else {
-    const real = (-b / (2 * a)).toFixed(3);
-    const imag = (Math.sqrt(-D) / (2 * a)).toFixed(3);
-    stepLines.push(`📘 Step 4: D < 0 → Two complex roots`);
-    stepLines.push(`  x₁ = ${real} + ${imag}i`);
-    stepLines.push(`  x₂ = ${real} - ${imag}i`);
+    const real = (-b / denom).toFixed(3);
+    const imag = (sqrtD / denom).toFixed(3);
+    steps.push("$$\\textbf{Step\\ 4:}\\ D < 0 \\Rightarrow \\text{Two complex roots}$$");
+    steps.push(`$$x_1 = ${real} + ${imag}i,\\quad x_2 = ${real} - ${imag}i$$`);
   }
 
-  result.textContent = stepLines.join("\n");
+  result.innerHTML = steps.join("");
+  renderMathInElement(result); // Re-render LaTeX
 }
