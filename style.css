@@ -1,3 +1,4 @@
+/* Global styles */
 body {
   margin: 0;
   padding: 0;
@@ -9,18 +10,20 @@ body {
   min-height: 100vh;
 }
 
+/* Main calculator container */
 .container {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(20px);
   border-radius: 25px;
   box-shadow: 8px 8px 30px #d1d9e6, -8px -8px 30px #ffffff;
   padding: 2rem;
-  max-width: 520px;
+  max-width: 540px;
   width: 95%;
   text-align: center;
   color: #333;
 }
 
+/* Header */
 h1 {
   color: #4b0082;
   margin-bottom: 0.5rem;
@@ -33,6 +36,7 @@ p {
   font-size: 1rem;
 }
 
+/* Input field row */
 .input-group {
   display: flex;
   justify-content: space-around;
@@ -41,6 +45,7 @@ p {
   flex-wrap: nowrap;
 }
 
+/* Neumorphic input fields */
 .input-group input {
   padding: 10px;
   width: 60px;
@@ -52,6 +57,7 @@ p {
   font-size: 1rem;
 }
 
+/* Solve button */
 button {
   padding: 12px 30px;
   border: none;
@@ -70,6 +76,7 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* Result panel with glass effect */
 .result-panel {
   margin-top: 1.5rem;
   background: rgba(255, 255, 255, 0.3);
@@ -78,17 +85,24 @@ button:hover {
   backdrop-filter: blur(10px);
   box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.4);
   text-align: left;
+  overflow-x: auto;
+  word-wrap: break-word;
+  max-height: 80vh;
 }
 
+/* Steps container (KaTeX output) */
 #steps.latex-output {
   margin-top: 10px;
   color: #2f2f2f;
   font-weight: normal;
-  white-space: pre-line;
+  white-space: normal;
   font-size: 1.05rem;
   line-height: 1.8;
+  text-align: left;
+  word-break: break-word;
 }
 
+/* Optional: Make KaTeX a bit larger */
 .katex {
   font-size: 1.1rem;
 }
