@@ -51,15 +51,28 @@ function solve() {
   }
 
   result.innerHTML = steps.join("");
-  renderMathInElement(result);
+  renderMathInElement(result); // Render LaTeX
 }
 
+// 📸 Save entire solution area as image
 function saveAsImage() {
   const resultPanel = document.getElementById("result");
-  html2canvas(resultPanel).then(canvas => {
-    const link = document.createElement("a");
-    link.download = "quadratic_solution.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  });
-                                }
+
+  // Wait for KaTeX to finish rendering before capturing
+  setTimeout(() => {
+    html2canvas(resultPanel, {
+      scrollY: -window.scrollY,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: null,
+      scale: 2,
+      windowWidth: document.body.scrollWidth,
+      windowHeight: resultPanel.scrollHeight
+    }).then(canvas => {
+      const link = document.createElement("a");
+      link.download = "quadratic_solution.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  }, 500);
+}
