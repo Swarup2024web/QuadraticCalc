@@ -15,23 +15,37 @@ function solve() {
   }
 
   const D = b * b - 4 * a * c;
-  let text = `Discriminant (D) = ${b}² - 4×${a}×${c} = ${D}\n`;
+  const stepLines = [];
+
+  stepLines.push(`📘 Step 1: Use the formula`);
+  stepLines.push(`  x = (-b ± √(b² - 4ac)) / 2a`);
+  stepLines.push(``);
+
+  stepLines.push(`📘 Step 2: Substitute the values`);
+  stepLines.push(`  x = (-(${b}) ± √(${b}² - 4×${a}×${c})) / (2×${a})`);
+  stepLines.push(``);
+
+  stepLines.push(`📘 Step 3: Calculate discriminant`);
+  stepLines.push(`  D = ${b}² - 4×${a}×${c} = ${D}`);
+  stepLines.push(``);
 
   if (D > 0) {
     const x1 = ((-b + Math.sqrt(D)) / (2 * a)).toFixed(3);
     const x2 = ((-b - Math.sqrt(D)) / (2 * a)).toFixed(3);
-    text += "🟢 D > 0 → Two distinct real roots\n";
-    text += `x₁ = ${x1}, x₂ = ${x2}`;
+    stepLines.push(`📘 Step 4: D > 0 → Two distinct real roots`);
+    stepLines.push(`  x₁ = ${x1}`);
+    stepLines.push(`  x₂ = ${x2}`);
   } else if (D === 0) {
     const x = (-b / (2 * a)).toFixed(3);
-    text += "🔵 D = 0 → Two equal real roots\n";
-    text += `x = ${x}`;
+    stepLines.push(`📘 Step 4: D = 0 → Two equal real roots`);
+    stepLines.push(`  x = ${x}`);
   } else {
     const real = (-b / (2 * a)).toFixed(3);
     const imag = (Math.sqrt(-D) / (2 * a)).toFixed(3);
-    text += "🔴 D < 0 → Two complex roots\n";
-    text += `x₁ = ${real} + ${imag}i\nx₂ = ${real} - ${imag}i`;
+    stepLines.push(`📘 Step 4: D < 0 → Two complex roots`);
+    stepLines.push(`  x₁ = ${real} + ${imag}i`);
+    stepLines.push(`  x₂ = ${real} - ${imag}i`);
   }
 
-  result.textContent = text;
+  result.textContent = stepLines.join("\n");
 }
