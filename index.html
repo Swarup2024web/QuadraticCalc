@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quadratic Equation Solver</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container glass">
+    <h1>🧮 Quadratic Equation Solver</h1>
+    <p>Form: ax² + bx + c = 0</p>
+
+    <div class="input-group">
+      <input type="number" id="a" placeholder="Enter a" />
+      <input type="number" id="b" placeholder="Enter b" />
+      <input type="number" id="c" placeholder="Enter c" />
+    </div>
+
+    <button onclick="solve()">Solve Equation</button>
+
+    <div class="result-panel">
+      <h3>Solution:</h3>
+      <p id="steps">
