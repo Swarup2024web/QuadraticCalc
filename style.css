@@ -1,3 +1,4 @@
+/* Background and font */
 body {
   margin: 0;
   padding: 0;
@@ -9,6 +10,7 @@ body {
   min-height: 100vh;
 }
 
+/* Container Glassmorphic Style */
 .container {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(20px);
@@ -21,9 +23,11 @@ body {
   color: #333;
 }
 
+/* Header and form text */
 h1 {
   color: #4b0082;
   margin-bottom: 0.5rem;
+  font-size: 1.8rem;
 }
 
 p {
@@ -31,36 +35,44 @@ p {
   color: #444;
 }
 
+/* Input group layout (flex, responsive) */
 .input-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
   justify-content: center;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
+/* Each input box for a, b, c */
 .input-box {
-  flex: 1 1 120px;
+  flex: 0 1 90px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
+/* Input label */
 .input-box label {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
+  font-size: 14px;
   color: #333;
 }
 
+/* Neumorphic input field */
 input[type="number"] {
-  padding: 12px;
-  border-radius: 10px;
+  padding: 10px;
+  width: 70px;
+  text-align: center;
+  border-radius: 8px;
   border: none;
   background: #f0f0f3;
-  box-shadow: inset 6px 6px 10px #d1d9e6, inset -6px -6px 10px #fff;
-  font-size: 1rem;
-  width: 100%;
+  box-shadow: inset 4px 4px 8px #d1d9e6, inset -4px -4px 8px #fff;
+  font-size: 16px;
 }
 
+/* Beautiful gradient button */
 button {
   padding: 12px 30px;
   border: none;
@@ -79,6 +91,7 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* Result panel glass style */
 .result-panel {
   margin-top: 1.5rem;
   background: rgba(255, 255, 255, 0.3);
@@ -88,9 +101,11 @@ button:hover {
   box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.4);
 }
 
+/* Output result */
 #steps {
   margin-top: 10px;
   color: #2f2f2f;
   font-weight: bold;
-  white-space: pre-line;
+  white-space: pre-line; /* keeps step-by-step line breaks */
+  font-family: 'Courier New', monospace;
 }
