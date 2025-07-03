@@ -1,4 +1,4 @@
-/* Page background and font */
+/* Global styling */
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
 }
 
-/* Main container with neumorphism + glassmorphism */
+/* Glassmorphic + Neumorphic container */
 .container {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(20px);
@@ -23,7 +23,7 @@ body {
   color: #333;
 }
 
-/* Header styling */
+/* Heading */
 h1 {
   color: #4b0082;
   margin-bottom: 0.5rem;
@@ -36,7 +36,7 @@ p {
   font-size: 1rem;
 }
 
-/* Input box row */
+/* Input row */
 .input-group {
   display: flex;
   justify-content: space-around;
@@ -45,7 +45,7 @@ p {
   flex-wrap: nowrap;
 }
 
-/* Input boxes */
+/* Input fields */
 .input-group input {
   padding: 10px;
   width: 60px;
@@ -57,7 +57,7 @@ p {
   font-size: 1rem;
 }
 
-/* Solve button styling */
+/* Button styles */
 button {
   padding: 12px 30px;
   border: none;
@@ -66,9 +66,10 @@ button {
   color: white;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
   transition: 0.3s ease;
   margin-top: 1rem;
+  margin-right: 10px;
 }
 
 button:hover {
@@ -76,7 +77,7 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Result box for LaTeX steps */
+/* Result panel with scroll and wrap */
 .result-panel {
   margin-top: 1.5rem;
   background: rgba(255, 255, 255, 0.3);
@@ -92,7 +93,7 @@ button:hover {
   white-space: normal;
 }
 
-/* LaTeX output container */
+/* KaTeX output area */
 #steps.latex-output {
   margin-top: 10px;
   color: #2f2f2f;
@@ -105,7 +106,7 @@ button:hover {
   white-space: normal;
 }
 
-/* Ensures LaTeX equations don’t overflow */
+/* Make math display correctly and wrap safely */
 .katex {
   font-size: 1.1rem;
   white-space: normal !important;
@@ -113,11 +114,11 @@ button:hover {
   overflow-wrap: break-word !important;
 }
 
-/* For large block equations (display mode) */
+/* Allow scrolling for large display equations */
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: normal !important;
   word-break: break-word !important;
   padding: 0.25rem 0;
-  }
+}
